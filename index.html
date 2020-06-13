@@ -50,14 +50,51 @@
       if (typeof web3 !== 'undefined') {
         web3 = new Web3(web3.currentProvider);
       } else {
-        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
       }
 
       // Set Contract Abi
-      var contractAbi = []; // Add Your Contract ABI here!!!
+      var contractAbi = [
+          {
+            "constant": true,
+            "inputs": [],
+            "name": "greet",
+            "outputs": [
+              {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "internalType": "string",
+                "name": "_greeting",
+                "type": "string"
+              }
+            ],
+            "name": "setGreeting",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ]; // Add Your Contract ABI here!!!
 
       // Set Contract Address
-      var contractAddress = ''; // Add Your Contract address here!!!
+      var contractAddress = "0xB3860958E68532fD5D48B4A8E490177585B8c895"; // Add Your Contract address here!!!
 
       // Set the Contract
       var contract = new web3.eth.Contract(contractAbi, contractAddress);
